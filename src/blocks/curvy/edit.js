@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,8 +11,15 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import {
+  useBlockProps,
+  InspectorControls,
+	InnerBlocks
+} from "@wordpress/block-editor";
+import {
+  PanelBody,
+  ToggleControl,
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,7 +27,7 @@ import { PanelBody, ToggleControl } from '@wordpress/components';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,24 +38,69 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 import metadata from "./block.json";
+import { Curve } from "./components/curve";
+import { TopCurveSettings } from "./components/topCurveSettings";
+import { BottomCurveSettings } from "./components/bottomCurveSettings";
+
 export default function Edit(props) {
-	console.log({ props });
-	return (
-		<>
-			<p { ...useBlockProps() }>
-				{ __( 'Curvy – hello from the editor!', metadata.textdomain) }
-			</p>
-			<div>test</div>
-			<InspectorControls>
-				<PanelBody title={ __("Top curve", metadata.textdomain) }>
-					<div>
-						<ToggleControl
-							label={ __("Enable top curve", metadata.textdomain) }
-							help={ __("Enables the top curve", metadata.textdomain) }
-						/>
-					</div>
-				</PanelBody>
-			</InspectorControls>
-		</>
-	);
+  const { className, ...blockProps } = useBlockProps();
+  return (
+    <>
+      <section className={`${className} alignfull`} {...blockProps}>
+        {props.attributes.enableTopCurve && (
+          <Curve
+            width={props.attributes.topWidth}
+            height={props.attributes.topHeight}
+            color={props.attributes.topColor}
+            flipX={props.attributes.topFlipX}
+            flipY={props.attributes.topFlipY}
+          />
+        )}
+				<InnerBlocks />
+        {props.attributes.enableBottomCurve && (
+          <Curve
+						isBottom
+            width={props.attributes.bottomWidth}
+            height={props.attributes.bottomHeight}
+            color={props.attributes.bottomColor}
+            flipX={props.attributes.bottomFlipX}
+            flipY={props.attributes.bottomFlipY}
+          />
+        )}
+      </section>
+      <InspectorControls>
+        <PanelBody title={__("Top curve", metadata.textdomain)}>
+          <ToggleControl
+            label={__("Enable top curve", metadata.textdomain)}
+            checked={props.attributes.enableTopCurve}
+            onChange={(isChecked) =>
+              props.setAttributes({ enableTopCurve: isChecked })
+            }
+          />
+          {props.attributes.enableTopCurve && (
+            <TopCurveSettings
+              attributes={props.attributes}
+              setAttributes={props.setAttributes}
+            />
+          )}
+        </PanelBody>
+
+        <PanelBody title={__("Bottom curve", metadata.textdomain)}>
+          <ToggleControl
+            label={__("Enable bottom curve", metadata.textdomain)}
+            checked={props.attributes.enableBottomCurve}
+            onChange={(isChecked) =>
+              props.setAttributes({ enableBottomCurve: isChecked })
+            }
+          />
+          {props.attributes.enableBottomCurve && (
+            <BottomCurveSettings
+              attributes={props.attributes}
+              setAttributes={props.setAttributes}
+            />
+          )}
+        </PanelBody>
+      </InspectorControls>
+    </>
+  );
 }
