@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "onvia-blocks/curvy",
+	"version": "0.1.0",
+	"title": "Curvy",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Curvy shape dividers to make dividing page content more interesting.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"enableTopCurve" : {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"textdomain": "onvia-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
