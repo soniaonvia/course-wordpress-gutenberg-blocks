@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "onvia-blocks/clicky-group",
+	"version": "0.1.0",
+	"title": "Clicky Group",
+	"category": "onvia-blocks",
+	"icon": "smiley",
+	"description": "A group of click buttons that click to a particular post or page rather than hardcoding the destination URL.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "onvia-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}

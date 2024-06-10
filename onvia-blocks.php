@@ -36,6 +36,10 @@ function register_my_onvia_blocks() {
 	add_filter("block_categories_all", "create_custom_block_category");
 	// Bloque Curvy
 	register_block_type( __DIR__ . '/build/blocks/curvy' );
+	// Bloque Clicky Group
+	register_block_type( __DIR__ . '/build/blocks/clickyGroup' );
+	// Bloque Clicky Button
+	register_block_type( __DIR__ . '/build/blocks/clickyButton' );
 }
 add_action('init', 'register_my_onvia_blocks');
 

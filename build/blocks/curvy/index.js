@@ -385,13 +385,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -806,7 +799,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkcurvy"] = globalThis["webpackChunkcurvy"] || [];
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkonvia_blocks"] = globalThis["webpackChunkonvia_blocks"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
