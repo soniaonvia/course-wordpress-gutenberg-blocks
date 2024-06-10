@@ -4,10 +4,25 @@
 	"name": "onvia-blocks/curvy",
 	"version": "0.1.0",
 	"title": "Curvy",
-	"category": "widgets",
+	"category": "onvia-blocks",
 	"icon": "smiley",
 	"description": "Curvy shape dividers to make dividing page content more interesting.",
-	"example": {},
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "This is an example curvy block."
+				}
+			},
+			{
+				"name": "core/heading",
+				"attributes": {
+					"content": "This is an example curvy block."
+				}
+			}
+		]
+	},
 	"supports": {
 		"html": false,
 		"color" : {
@@ -19,6 +34,24 @@
 			"padding": true
 		}
 	},
+	"variations": [
+		{
+			"name": "top-only",
+			"title": "Curvy - top only",
+			"attributes": {
+				"enableTopCurve": true,
+				"enableBottomCurve": false
+			}
+		},
+		{
+			"name": "bottom-only",
+			"title": "Curvy - bottom only",
+			"attributes": {
+				"enableTopCurve": false,
+				"enableBottomCurve": true
+			}
+		}
+	],
 	"attributes": {
 		"style" : {
 			"type": "object",

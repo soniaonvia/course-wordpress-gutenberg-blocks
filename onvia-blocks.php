@@ -25,8 +25,22 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
+function create_custom_block_category($categories) {
+	array_unshift($categories, [
+		'slug' => 'onvia-blocks',
+		'title' => 'Onvia Blocks',
+	]);
+	return $categories;
+}
 function register_my_onvia_blocks() {
+	add_filter("block_categories_all", "create_custom_block_category");
 	// Bloque Curvy
 	register_block_type( __DIR__ . '/build/blocks/curvy' );
 }
 add_action('init', 'register_my_onvia_blocks');
+
+// function bootstrap_scripts() {
+//     wp_enqueue_style('bootstrapstyles', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
+//     wp_enqueue_script('bootstrapscripts','https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array('jquery'), '', true);
+// }
+// add_action('wp_enqueue_scripts', 'bootstrap_scripts');

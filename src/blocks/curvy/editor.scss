@@ -6,3 +6,13 @@
 
 .wp-block-onvia-blocks-curvy {
 }
+
+.curvy-icon {
+    background-color: black;
+    color: white;
+
+    &:hover {
+        background-color: deeppink;
+        color: black;
+    }
+}
