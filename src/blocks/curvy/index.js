@@ -38,7 +38,7 @@ registerBlockType(metadata.name, {
    */
   save,
   // icon: <div className='curvy-icon'>helllo curvy</div>
-  icon: <img src={icon} alt="" />,
+  icon: <img src={icon} />,
   transforms: {
     from: [
       {
