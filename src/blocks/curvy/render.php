@@ -9,7 +9,7 @@ $invertedPath =
 $topTransform = "rotate(" . ($attributes["topFlipY"] ? "180deg" : 0) .  ") scaleX(" . ($attributes["topFlipX"] ? "-1" : 1) . ")";
 $bottomTransform = "scaleY(-1) rotate(" . ($attributes["bottomFlipY"] ? "180deg" : 0) .  ") scaleX(" . ($attributes["bottomFlipX"] ? "-1" : 1) . ")";
 ?>
-<div <?php echo $block_wrapper_attributes; ?>>
+<section <?php echo $block_wrapper_attributes; ?>>
   <div class="curve top-curve" style="display: <?php echo $attributes['enableTopCurve'] ? "block" : "none" ?>; transform: <?php echo $topTransform; ?>; height: <?php echo $attributes['topHeight'] ?>px;">
     <svg style="height: <?php echo $attributes['topHeight'] ?>px; width: <?php echo $attributes['topWidth'] ?>%" preserveAspectRatio="none" viewBox="0 0 1200 120">
       <path fill="<?php echo $attributes['topColor'] ?? "white" ?>" d="<?php echo $attributes['topFlipY'] ? $invertedPath : $normalPath; ?>"></path>
@@ -23,4 +23,4 @@ $bottomTransform = "scaleY(-1) rotate(" . ($attributes["bottomFlipY"] ? "180deg"
       <path fill="<?php echo $attributes['bottomColor'] ?? "white" ?>" d="<?php echo $attributes['bottomFlipY'] ? $invertedPath : $normalPath; ?>"></path>
     </svg>
   </div>
-</div>
+</section>

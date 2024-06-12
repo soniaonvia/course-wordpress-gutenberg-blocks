@@ -14,10 +14,6 @@
  * @package CreateBlock
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
-
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it registers also all assets so they can be enqueued
@@ -25,24 +21,56 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function create_custom_block_category($categories) {
-	array_unshift($categories, [
-		'slug' => 'onvia-blocks',
-		'title' => 'Onvia Blocks',
-	]);
-	return $categories;
-}
-function register_my_onvia_blocks() {
-	add_filter("block_categories_all", "create_custom_block_category");
-	// Bloque Curvy
-	register_block_type( __DIR__ . '/build/blocks/curvy' );
-	// Bloque Clicky Group
-	register_block_type( __DIR__ . '/build/blocks/clickyGroup' );
-	// Bloque Clicky Button
-	register_block_type( __DIR__ . '/build/blocks/clickyButton' );
-}
-add_action('init', 'register_my_onvia_blocks');
 
+namespace Onvia;
+
+if(!defined("ABSPATH")) {
+	die("Silence is golden.");
+}
+
+final class OnviaBlocks
+{
+	static function init()
+	{
+		add_action('init', function () {
+			add_filter("block_categories_all", function ($categories) {
+				array_unshift($categories, [
+					'slug' => 'onvia-blocks',
+					'title' => 'Onvia Blocks',
+				]);
+				return $categories;
+			});
+			// Bloque Curvy
+			register_block_type(__DIR__ . '/build/blocks/curvy');
+			// Bloque Clicky Group
+			register_block_type(__DIR__ . '/build/blocks/clickyGroup');
+			// Bloque Clicky Button
+			register_block_type(__DIR__ . '/build/blocks/clickyButton');
+		});
+	}
+
+	static function convert_custom_properties($value)
+	{
+		$prefix = 'var:';
+		$prefix_len = strlen($prefix);
+		$token_in = '|';
+		$token_out = '--';
+		if (str_starts_with($value, $prefix)) {
+			$unwrapped_name = str_replace(
+				$token_in,
+				$token_out,
+				substr($value, $prefix_len)
+			);
+			$value = "var(--wp--$unwrapped_name)";
+		}
+
+		return $value;
+	}
+}
+
+OnviaBlocks::init();
+
+// SCRIPTS DE BOOTSTRAP
 // function bootstrap_scripts() {
 //     wp_enqueue_style('bootstrapstyles', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
 //     wp_enqueue_script('bootstrapscripts','https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array('jquery'), '', true);

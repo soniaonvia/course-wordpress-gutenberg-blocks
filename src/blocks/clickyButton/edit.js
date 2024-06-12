@@ -27,7 +27,8 @@ export default function edit(props) {
       }
     );
     return data;
-  }, props.attributes.postType);
+  }, [props.attributes.postType]);
+  console.log({ posts })
   const blockProps = useBlockProps();
   return (
     <>

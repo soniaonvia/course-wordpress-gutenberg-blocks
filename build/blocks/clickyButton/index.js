@@ -84,7 +84,10 @@ function edit(props) {
       per_page: -1
     });
     return data;
-  }, props.attributes.postType);
+  }, [props.attributes.postType]);
+  console.log({
+    posts
+  });
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Destination", _block_json__WEBPACK_IMPORTED_MODULE_5__.textdomain)
@@ -229,11 +232,7 @@ __webpack_require__.r(__webpack_exports__);
  * @return {Element} Element to render.
  */
 function save() {
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save();
-  const {
-    children
-  } = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useInnerBlocksProps.save(blockProps);
-  return children;
+  return null;
 }
 
 /***/ }),
