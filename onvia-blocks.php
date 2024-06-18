@@ -32,6 +32,9 @@ final class OnviaBlocks
 {
 	static function init()
 	{
+		add_action("enqueue_block_assets", function() {
+			wp_enqueue_style("dashicons");
+		});
 		add_action('init', function () {
 			add_filter("block_categories_all", function ($categories) {
 				array_unshift($categories, [
@@ -46,6 +49,10 @@ final class OnviaBlocks
 			register_block_type(__DIR__ . '/build/blocks/clickyGroup');
 			// Bloque Clicky Button
 			register_block_type(__DIR__ . '/build/blocks/clickyButton');
+			// Bloque Piccy Gallery
+			register_block_type(__DIR__ . '/build/blocks/piccyGallery');
+			// Bloque Piccy Image
+			register_block_type(__DIR__ . '/build/blocks/piccyImage');
 		});
 	}
 

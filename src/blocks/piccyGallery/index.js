@@ -13,7 +13,6 @@ import { registerBlockType } from "@wordpress/blocks";
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./style.scss";
-import icon from "./assets/clicky.svg";
 
 /**
  * Internal dependencies
@@ -37,5 +36,4 @@ registerBlockType(metadata.name, {
    * @see ./save.js
    */
   save,
-  icon: <img src={icon} />,
 });

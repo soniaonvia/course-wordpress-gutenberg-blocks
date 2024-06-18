@@ -1,12 +1,9 @@
 import {
   useBlockProps,
-  InspectorControls,
   useInnerBlocksProps,
   BlockControls,
   JustifyContentControl,
 } from "@wordpress/block-editor";
-import { PanelBody, ToggleControl } from "@wordpress/components";
-import metadata from "./block.json";
 import { parseValue } from "../../utils/parseValue";
 import "./editor.scss";
 

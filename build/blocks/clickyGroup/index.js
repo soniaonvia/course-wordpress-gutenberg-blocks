@@ -97,19 +97,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/clickyGroup/block.json");
-/* harmony import */ var _utils_parseValue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/parseValue */ "./src/utils/parseValue.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/clickyGroup/editor.scss");
-
-
+/* harmony import */ var _utils_parseValue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/parseValue */ "./src/utils/parseValue.js");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/clickyGroup/editor.scss");
 
 
 
 
 function Edit(props) {
-  const blockGap = (0,_utils_parseValue__WEBPACK_IMPORTED_MODULE_4__.parseValue)(props.attributes.style?.spacing?.blockGap || "");
+  const blockGap = (0,_utils_parseValue__WEBPACK_IMPORTED_MODULE_2__.parseValue)(props.attributes.style?.spacing?.blockGap || "");
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
     style: {
       gap: blockGap,
@@ -290,16 +285,6 @@ module.exports = window["wp"]["blockEditor"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["blocks"];
-
-/***/ }),
-
-/***/ "@wordpress/components":
-/*!************************************!*\
-  !*** external ["wp","components"] ***!
-  \************************************/
-/***/ ((module) => {
-
-module.exports = window["wp"]["components"];
 
 /***/ }),
 
