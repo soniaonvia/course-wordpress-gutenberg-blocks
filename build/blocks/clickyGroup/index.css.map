@@ -1,1 +1,0 @@
-{"version":3,"file":"blocks/clickyGroup/index.css","mappings":";;;AAAA;EACI;EACA;AACJ,C","sources":["webpack://onvia-blocks/./src/blocks/clickyGroup/editor.scss"],"sourcesContent":[".wp-block-onvia-blocks-clicky-group {\r\n    padding: 40px;\r\n    border: 1px solid red;\r\n}"],"names":[],"sourceRoot":""}

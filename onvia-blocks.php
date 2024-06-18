@@ -24,7 +24,7 @@
 
 namespace Onvia;
 
-if(!defined("ABSPATH")) {
+if (!defined("ABSPATH")) {
 	die("Silence is golden.");
 }
 
@@ -32,8 +32,10 @@ final class OnviaBlocks
 {
 	static function init()
 	{
-		add_action("enqueue_block_assets", function() {
+		add_action("enqueue_block_assets", function () {
 			wp_enqueue_style("dashicons");
+			$style_url = plugins_url("build/style-index.css", __FILE__);
+			wp_enqueue_style("onvia-blocks-style", $style_url);
 		});
 		add_action('init', function () {
 			add_filter("block_categories_all", function ($categories) {
@@ -53,6 +55,32 @@ final class OnviaBlocks
 			register_block_type(__DIR__ . '/build/blocks/piccyGallery');
 			// Bloque Piccy Image
 			register_block_type(__DIR__ . '/build/blocks/piccyImage');
+
+			register_block_pattern_category("onvia-patterns", array("label" => __("Onvia patterns", "onvia-blocks")));
+			register_block_pattern(
+				"onvia-blocks/call-to-action",
+				array(
+					"categories" => array("onvia-patterns"),
+					"title" => __("Onvia Blocks call to action", "onvia-blocks"),
+					"description" => __("A heading, paragraph and clicky button block", "onvia-blocks"),
+					"content" => '<!-- wp:heading {"textAlign":"center"} -->
+					<h2 class="wp-block-heading has-text-align-center">lorem ipsum</h2>
+					<!-- /wp:heading -->
+
+					<!-- wp:paragraph {"align":"center"} -->
+					<p class="has-text-align-center">hola</p>
+					<!-- /wp:paragraph -->
+
+					<!-- wp:onvia-blocks/clicky-group {"justifyContent":"center"} -->
+					<!-- wp:onvia-blocks/clicky-button {"labelText":"Call to action","style":{"color":{"background":"#000000","text":"#ffffff"},"spacing":{"padding":{"top":"10px","bottom":"10px","left":"20px","right":"20px"}}}} /-->
+					<!-- /wp:onvia-blocks/clicky-group -->'
+				)
+			);
+			$script_url = plugins_url("build/index.js", __FILE__);
+			wp_enqueue_script("onvia-blocks-script", $script_url, array("wp-blocks", "wp-element", "wp-editor"));
+
+			$style_url = plugins_url("build/style-index.css", __FILE__);
+			wp_enqueue_style("onvia-blocks-style", $style_url);
 		});
 	}
 
